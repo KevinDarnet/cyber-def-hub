@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: clip;
+    overflow-y: auto;
+    touch-action: auto;
+    overscroll-behavior-y: auto;
+    overscroll-behavior-x: auto;
+    background-color: #060613;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: clip;
+    overflow-y: visible;
+    touch-action: auto;
+    background-color: #060613;
+    @apply font-sans transition-colors duration-300;
+  }
+
+  html.dark,
+  html.dark body,
+  html.dark #root {
+    background-color: #060613;
+    color: #f1f5f9;
+  }
+
+  html:not(.dark),
+  html:not(.dark) body,
+  html:not(.dark) #root {
+    background-color: #eef1fb;
+    color: #0f172a;
+  }
+
+  #root {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: clip;
+    overflow-y: visible;
+    touch-action: auto;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Cosmic & Daylight OS Backdrop */
+.os-backdrop {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  overflow-x: clip;
+  overflow-y: visible;
+  touch-action: auto;
+  flex: 1 1 0%;
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+.dark .os-backdrop {
+  background-color: #060613;
+  background-image:
+    radial-gradient(ellipse 65% 50% at 18% 8%, rgba(139, 92, 246, 0.26), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 85% 15%, rgba(59, 130, 246, 0.18), transparent 58%),
+    radial-gradient(ellipse 60% 45% at 50% 96%, rgba(168, 85, 247, 0.16), transparent 60%),
+    radial-gradient(circle at 25% 35%, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 75% 65%, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 90px 90px, 130px 130px;
+  color: #f1f5f9;
+}
+
+html:not(.dark) .os-backdrop {
+  background-color: #eef1fb;
+  background-image:
+    radial-gradient(ellipse 65% 50% at 15% 10%, rgba(139, 92, 246, 0.14), transparent 58%),
+    radial-gradient(ellipse 55% 45% at 85% 12%, rgba(56, 189, 248, 0.14), transparent 55%),
+    radial-gradient(ellipse 60% 40% at 50% 95%, rgba(129, 140, 248, 0.12), transparent 60%);
+  color: #0f172a;
+}
+
+/* Contención de overscroll exclusiva para ventanas modales y overlays:
+   Evita que el scroll interno del modal mueva el fondo detrás de él */
+.overscroll-contain,
+.modal-scroll,
+[data-modal-scroll] {
+  overscroll-behavior: contain;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-2xl backdrop-blur-xl transition-all duration-300
+      bg-white/80 border border-slate-200/80 shadow-glass-light
+      dark:bg-[#111126]/75 dark:border-white/[0.09] dark:shadow-glass-dark;
+  }
+
+  .glass-card-hover {
+    @apply glass-card hover:border-violet-400/50 dark:hover:border-violet-500/40;
+  }
+
+  .glass-subcard {
+    @apply rounded-xl transition-all duration-200
+      bg-slate-100/80 border border-slate-200/70
+      dark:bg-white/[0.035] dark:border-white/[0.07];
+  }
+
+  .os-input {
+    @apply w-full rounded-xl px-3.5 py-2.5 text-sm outline-none transition-all
+      bg-slate-100/90 border border-slate-300/80 text-slate-900 placeholder:text-slate-400
+      focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20
+      dark:bg-[#0b0b1a]/80 dark:border-white/10 dark:text-slate-100 dark:placeholder:text-slate-500
+      dark:focus:border-violet-400 dark:focus:ring-violet-500/25;
+  }
+
+  .os-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold text-white
+      bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600
+      hover:from-violet-500 hover:via-purple-500 hover:to-indigo-500
+      shadow-neon-purple transition-all duration-200 active:scale-[0.98];
+  }
+
+  .os-btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-sm font-medium
+      text-slate-600 hover:text-slate-900 hover:bg-slate-200/60
+      dark:text-slate-300 dark:hover:text-white dark:hover:bg-white/[0.07]
+      transition-all duration-200;
+  }
+}
+
+/* Custom sleek scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.55);
+}
+
+/* KaTeX custom styles for CyberDefHub */
+.katex-display {
+  display: block;
+  margin: 1.25rem 0 !important;
+  text-align: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0;
+}
+
+.katex {
+  font-size: 1.05em;
+  text-rendering: auto;
+}
+
+.dark .katex {
+  color: #f1f5f9;
+}
+
+.dark .katex-display {
+  color: #f1f5f9;
+}
+

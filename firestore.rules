@@ -1,0 +1,16 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Cada estudiante solo puede leer y escribir sus propios documentos
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Colecciones y subdocumentos aislados por estudiante:
+      // carrera, materias, tareas, hábitos, notas y resúmenes largos
+      match /{document=**} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+  }
+}

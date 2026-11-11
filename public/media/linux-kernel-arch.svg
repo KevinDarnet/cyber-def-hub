@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" fill="none">
+  <rect width="800" height="360" rx="20" fill="#0B0B1E"/>
+  <rect x="12" y="12" width="776" height="336" rx="14" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="2"/>
+  <text x="400" y="46" text-anchor="middle" fill="#F8FAFC" font-family="sans-serif" font-size="20" font-weight="bold">Arquitectura del Sistema Operativo GNU/Linux (Ring 3 vs Ring 0)</text>
+
+  <!-- User Space -->
+  <rect x="60" y="70" width="680" height="84" rx="12" fill="#3B0764" fill-opacity="0.65" stroke="#A855F7" stroke-width="1.5"/>
+  <text x="400" y="96" text-anchor="middle" fill="#E9D5FF" font-family="sans-serif" font-size="14" font-weight="bold">USER SPACE (Espacio de Usuario • Ring 3)</text>
+  <rect x="90" y="108" width="180" height="32" rx="6" fill="#581C87"/>
+  <text x="180" y="129" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12">Procesos / Daemons</text>
+  <rect x="310" y="108" width="180" height="32" rx="6" fill="#581C87"/>
+  <text x="400" y="129" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12">Shell (Bash / Zsh)</text>
+  <rect x="530" y="108" width="180" height="32" rx="6" fill="#581C87"/>
+  <text x="620" y="129" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12">GNU C Library (glibc)</text>
+
+  <!-- System Call Interface -->
+  <rect x="60" y="168" width="680" height="96" rx="12" fill="#0E7490" fill-opacity="0.55" stroke="#22D3EE" stroke-width="1.5"/>
+  <text x="400" y="194" text-anchor="middle" fill="#A5F3FC" font-family="sans-serif" font-size="14" font-weight="bold">KERNEL SPACE (Núcleo Linux • Ring 0 • System Call Interface)</text>
+  <rect x="85" y="210" width="145" height="38" rx="6" fill="#155E75"/>
+  <text x="157" y="234" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12">Scheduler (CFS)</text>
+  <rect x="245" y="210" width="145" height="38" rx="6" fill="#155E75"/>
+  <text x="317" y="234" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12">Memoria Virtual</text>
+  <rect x="405" y="210" width="145" height="38" rx="6" fill="#155E75"/>
+  <text x="477" y="234" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12">VFS / Ext4 / XFS</text>
+  <rect x="565" y="210" width="150" height="38" rx="6" fill="#155E75"/>
+  <text x="640" y="234" text-anchor="middle" fill="#FFFFFF" font-family="sans-serif" font-size="12">Netfilter / Stack IP</text>
+
+  <!-- Hardware -->
+  <rect x="60" y="278" width="680" height="50" rx="12" fill="#064E3B" fill-opacity="0.6" stroke="#34D399" stroke-width="1.5"/>
+  <text x="400" y="308" text-anchor="middle" fill="#D1FAE5" font-family="sans-serif" font-size="14" font-weight="bold">HARDWARE FÍSICO (CPU • MMU/RAM • Discos NVMe • NICs de Red)</text>
+</svg>
